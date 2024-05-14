@@ -3,6 +3,8 @@ import "./App.css";
 import Login from "./Pages/LoginPage";
 import PageNotFound from "./Pages/PageNotFound";
 import Admin from "./Pages/Admin";
+import Dashboard from "./Pages/Admin/Dashboard";
+import User from "./Pages/Admin/User";
 
 function App() {
   return (
@@ -10,7 +12,10 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Admin />} />
+          <Route path="/admin" element={<Admin />}>
+            <Route index element={<Dashboard />} />
+            <Route path="user" element={<User />} />
+          </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
