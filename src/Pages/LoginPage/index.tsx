@@ -13,7 +13,7 @@ const Login: React.FC = () => {
       });
     } else if (tel === "admin" && password === "123456") {
       console.log("Login success");
-      navigate("/dashboard");
+      navigate("/admin");
     } else {
       toast.error("Sai thông tin đăng nhập.", {
         duration: 2000,

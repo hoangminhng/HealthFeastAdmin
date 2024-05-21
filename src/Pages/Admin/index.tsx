@@ -30,14 +30,12 @@ const Admin: React.FC = () => {
 
       <Sidebar />
 
-      <div className="p-4 sm:ml-64">
-        <div className="border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+      <div className="sm:ml-64 h-screen">
+        <div className="border-2 border-[#D6D6D6] dark:border-gray-700 h-full flex flex-col">
           <div className="flex flex-wrap justify-between p-4 gap-4 mb-4">
             <NavbarAdmin />
           </div>
-          <div>
-            <Outlet />
-          </div>
+          <Outlet />
         </div>
       </div>
     </>

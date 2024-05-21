@@ -1,5 +1,205 @@
+import { Checkbox, Typography } from "@material-tailwind/react";
+import { useState } from "react";
+import LoginModal from "../../../Component/LoginModal";
+
 const User: React.FC = () => {
-  return <>user</>;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      // If the click occurs on the overlay (not on the modal content), close the modal
+      toggleModal();
+    }
+  };
+  return (
+    <>
+      <style>
+        {`
+          .rounded-thead th:first-child {
+            border-top-left-radius: 0.5rem; /* Adjust the value as needed */
+          }
+          
+          .rounded-thead th:last-child {
+            border-top-right-radius: 0.5rem; /* Adjust the value as needed */
+          }
+          
+          .rounded-tbody tr:first-child th {
+            border-bottom-left-radius: 0.5rem; /* Adjust the value as needed */
+          }
+          
+          .rounded-tbody tr:first-child td:last-child {
+            border-bottom-right-radius: 0.5rem; /* Adjust the value as needed */
+          }
+          
+          .rounded-tbody tr:last-child th {
+            border-bottom-left-radius: 0.5rem; /* Adjust the value as needed */
+          }
+          
+          .rounded-tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 0.5rem; /* Adjust the value as needed */
+          }
+          
+        `}
+      </style>
+      <div className="bg-[#e7e7e7] h-full p-3 flex flex-col">
+        <Typography
+          variant="h5"
+          placeholder=""
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
+        >
+          Tất cả người dùng
+        </Typography>
+        <div className=" bg-white p-3 mx-2 h-full flex flex-col items-center justify-between">
+          <div className="relative overflow-x-auto w-full">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+              <thead className="text-xs text-white uppercase bg-black dark:bg-gray-700 dark:text-gray-400 rounded-thead">
+                <tr className="rounded-lg">
+                  <th scope="col" className="px-6 py-3">
+                    {" "}
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Tên người dùng
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Số điện thoại
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Ngày đăng ký
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Gói dùng
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Đã thanh toán
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Nợ
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="rounded-tbody">
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th>
+                    <Checkbox
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                      crossOrigin={undefined}
+                    />
+                  </th>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg"
+                  >
+                    Nguyễn Văn Dũng
+                  </th>
+                  <td className="px-6 py-4">01237123099</td>
+                  <td className="px-6 py-4">17/03/2024</td>
+                  <td className="px-6 py-4">Premium</td>
+                  <td className="px-6 py-4 text-green-500">4.999.999 VNĐ</td>
+                  <td className="px-6 py-4">0 VNĐ</td>
+                </tr>
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th>
+                    <Checkbox
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                      crossOrigin={undefined}
+                    />
+                  </th>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Lê Trung Thọ
+                  </th>
+                  <td className="px-6 py-4">08128241932</td>
+                  <td className="px-6 py-4">24/03/2024</td>
+                  <td className="px-6 py-4">Premium</td>
+                  <td className="px-6 py-4 text-green-500">2.029.999 VNĐ</td>
+                  <td className="px-6 py-4 text-red-500">2.970.000 VNĐ</td>
+                </tr>
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th>
+                    <Checkbox
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                      crossOrigin={undefined}
+                    />
+                  </th>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Lê Vũ Đình Duy
+                  </th>
+                  <td className="px-6 py-4">01237123099</td>
+                  <td className="px-6 py-4">17/03/2024</td>
+                  <td className="px-6 py-4">Premium</td>
+                  <td className="px-6 py-4 text-green-500">4.999.999 VNĐ</td>
+                  <td className="px-6 py-4">0 VNĐ</td>
+                </tr>
+                <tr className="bg-white dark:bg-gray-800">
+                  <th>
+                    <Checkbox
+                      onPointerEnterCapture={undefined}
+                      onPointerLeaveCapture={undefined}
+                      crossOrigin={undefined}
+                    />
+                  </th>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg"
+                  >
+                    Tống Ái Linh
+                  </th>
+                  <td className="px-6 py-4">08128241932</td>
+                  <td className="px-6 py-4">24/03/2024</td>
+                  <td className="px-6 py-4">Premium</td>
+                  <td className="px-6 py-4 text-green-500">2.029.999 VNĐ</td>
+                  <td className="px-6 py-4 text-red-500 rounded-br-lg">
+                    2.970.000 VNĐ
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button
+            onClick={toggleModal}
+            type="button"
+            className="text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-2xl text-sm px-3 py-1 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 w-fit flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6 mr-2"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Thêm người dùng
+          </button>
+          {isModalOpen && (
+            <div
+              tabIndex={-1}
+              aria-hidden="true"
+              onMouseDown={handleOverlayClick}
+              className="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 max-h-full inset-0 overflow-x-hidden overflow-y-auto flex bg-black bg-opacity-50  "
+              // className="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+            >
+              <LoginModal />
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default User;
