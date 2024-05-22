@@ -1,5 +1,5 @@
-import Sidebar from "./Sidebar";
-import NavbarAdmin from "./Navbar";
+import Sidebar from "../../Component/Sidebar";
+import NavbarAdmin from "../../Component/Navbar";
 import { Outlet } from "react-router-dom";
 
 const Admin: React.FC = () => {
@@ -31,7 +31,7 @@ const Admin: React.FC = () => {
       <Sidebar />
 
       <div className="sm:ml-64 h-screen">
-        <div className="border-2 border-[#D6D6D6] dark:border-gray-700 h-full flex flex-col">
+        <div className="dark:border-gray-700 h-full w-full flex flex-col">
           <div className="flex flex-wrap justify-between p-4 gap-4 mb-4">
             <NavbarAdmin />
           </div>

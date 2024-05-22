@@ -1,9 +1,12 @@
 import { Checkbox, Typography } from "@material-tailwind/react";
-import { useState } from "react";
-import LoginModal from "../../../Component/LoginModal";
+import { useEffect, useState } from "react";
+import AddUserModal from "../../../Component/Modal";
+import { GetUser } from "../../../api/User";
+import { NumberFormat } from "../../../Utils/numberFormat";
 
 const User: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userlList, setUserList] = useState<User[] | undefined>([]);
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -13,6 +16,20 @@ const User: React.FC = () => {
       toggleModal();
     }
   };
+
+  const fetchUsers = async () => {
+    let respone = await GetUser();
+    setUserList(respone);
+  };
+
+  useEffect(() => {
+    try {
+      fetchUsers();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <>
       <style>
@@ -52,7 +69,7 @@ const User: React.FC = () => {
         >
           Tất cả người dùng
         </Typography>
-        <div className=" bg-white p-3 mx-2 h-full flex flex-col items-center justify-between">
+        <div className="bg-white p-3 mx-2 h-full flex flex-col items-center justify-between">
           <div className="relative overflow-x-auto w-full">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-white uppercase bg-black dark:bg-gray-700 dark:text-gray-400 rounded-thead">
@@ -81,88 +98,38 @@ const User: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="rounded-tbody">
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th>
-                    <Checkbox
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                      crossOrigin={undefined}
-                    />
-                  </th>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg"
-                  >
-                    Nguyễn Văn Dũng
-                  </th>
-                  <td className="px-6 py-4">01237123099</td>
-                  <td className="px-6 py-4">17/03/2024</td>
-                  <td className="px-6 py-4">Premium</td>
-                  <td className="px-6 py-4 text-green-500">4.999.999 VNĐ</td>
-                  <td className="px-6 py-4">0 VNĐ</td>
-                </tr>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th>
-                    <Checkbox
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                      crossOrigin={undefined}
-                    />
-                  </th>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Lê Trung Thọ
-                  </th>
-                  <td className="px-6 py-4">08128241932</td>
-                  <td className="px-6 py-4">24/03/2024</td>
-                  <td className="px-6 py-4">Premium</td>
-                  <td className="px-6 py-4 text-green-500">2.029.999 VNĐ</td>
-                  <td className="px-6 py-4 text-red-500">2.970.000 VNĐ</td>
-                </tr>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th>
-                    <Checkbox
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                      crossOrigin={undefined}
-                    />
-                  </th>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    Lê Vũ Đình Duy
-                  </th>
-                  <td className="px-6 py-4">01237123099</td>
-                  <td className="px-6 py-4">17/03/2024</td>
-                  <td className="px-6 py-4">Premium</td>
-                  <td className="px-6 py-4 text-green-500">4.999.999 VNĐ</td>
-                  <td className="px-6 py-4">0 VNĐ</td>
-                </tr>
-                <tr className="bg-white dark:bg-gray-800">
-                  <th>
-                    <Checkbox
-                      onPointerEnterCapture={undefined}
-                      onPointerLeaveCapture={undefined}
-                      crossOrigin={undefined}
-                    />
-                  </th>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg"
-                  >
-                    Tống Ái Linh
-                  </th>
-                  <td className="px-6 py-4">08128241932</td>
-                  <td className="px-6 py-4">24/03/2024</td>
-                  <td className="px-6 py-4">Premium</td>
-                  <td className="px-6 py-4 text-green-500">2.029.999 VNĐ</td>
-                  <td className="px-6 py-4 text-red-500 rounded-br-lg">
-                    2.970.000 VNĐ
-                  </td>
-                </tr>
+                {userlList?.map((user) => (
+                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th>
+                      <Checkbox
+                        onPointerEnterCapture={undefined}
+                        onPointerLeaveCapture={undefined}
+                        crossOrigin={undefined}
+                      />
+                    </th>
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg"
+                    >
+                      {user.userName}
+                    </th>
+                    <td className="px-6 py-4">{user.phoneNumber}</td>
+                    <td className="px-6 py-4">
+                      {user.dateRegistered.toDateString()}
+                    </td>
+                    <td className="px-6 py-4">{user.memberShip}</td>
+                    <td className="px-6 py-4 text-green-500">
+                      {NumberFormat(user.paymentAmout)}
+                    </td>
+                    <td
+                      className={`px-6 py-4 ${
+                        user.debt > 0 ? "text-red-500" : ""
+                      }`}
+                    >
+                      {NumberFormat(user.debt)}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -193,7 +160,7 @@ const User: React.FC = () => {
               className="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 max-h-full inset-0 overflow-x-hidden overflow-y-auto flex bg-black bg-opacity-50  "
               // className="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
             >
-              <LoginModal />
+              <AddUserModal />
             </div>
           )}
         </div>

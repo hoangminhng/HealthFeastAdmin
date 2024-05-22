@@ -1,4 +1,4 @@
-const LoginModal: React.FC = () => {
+const AddUserModal: React.FC = () => {
   return (
     <>
       <div className="relative w-full max-w-4xl max-h-full">
@@ -75,4 +75,4 @@ const LoginModal: React.FC = () => {
   );
 };
 
-export default LoginModal;
+export default AddUserModal;

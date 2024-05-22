@@ -5,6 +5,8 @@ import PageNotFound from "./Pages/PageNotFound";
 import Admin from "./Pages/Admin";
 import Dashboard from "./Pages/Admin/Dashboard";
 import User from "./Pages/Admin/User";
+import Group from "./Pages/Admin/Group";
+import Doctor from "./Pages/Admin/Doctor";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/admin" element={<Admin />}>
             <Route index element={<Dashboard />} />
             <Route path="user" element={<User />} />
+            <Route path="group" element={<Group />} />
+            <Route path="doctor" element={<Doctor />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>

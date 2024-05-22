@@ -1,13 +1,13 @@
-import Dashboard from "../../../Component/Icon/dashboard";
-import User from "../../../Component/Icon/user";
-import Group from "../../../Component/Icon/group";
-import Doctor from "../../../Component/Icon/doctor";
-import Equipment from "../../../Component/Icon/equipment";
-import Print from "../../../Component/Icon/print";
-import Report from "../../../Component/Icon/report";
-import OtherOption from "../../../Component/Icon/otherOption";
-import Introduction from "../../../Component/Icon/introduction";
-import SignOut from "../../../Component/Icon/signOut";
+import Dashboard from "../Icon/dashboard";
+import User from "../Icon/user";
+import Group from "../Icon/group";
+import Doctor from "../Icon/doctor";
+import Equipment from "../Icon/equipment";
+import Print from "../Icon/print";
+import Report from "../Icon/report";
+import OtherOption from "../Icon/otherOption";
+import Introduction from "../Icon/introduction";
+import SignOut from "../Icon/signOut";
 import { Link } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
@@ -25,26 +25,32 @@ const Sidebar: React.FC = () => {
     {
       label: "Nhóm",
       icon: <Group />,
+      path: "/admin/group",
     },
     {
       label: "Bác sĩ",
       icon: <Doctor />,
+      path: "/admin/doctor",
     },
     {
       label: "Thiết bị",
       icon: <Equipment />,
+      path: "/admin/equipment",
     },
     {
       label: "In",
       icon: <Print />,
+      path: "/admin/print",
     },
     {
       label: "Báo cáo",
       icon: <Report />,
+      path: "/admin/report",
     },
     {
       label: "Lựa chọn khác",
       icon: <OtherOption />,
+      path: "/admin/other-option",
     },
     {
       label: "Giới thiệu",
