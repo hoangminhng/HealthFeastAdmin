@@ -36,7 +36,7 @@ const NavbarAdmin: React.FC = () => {
         />
       </div>
       <div className="flex">
-        <button
+        {/* <button
           type="button"
           className="relative inline-flex items-center p-4 text-sm font-medium text-center bg-[#F5F7F9] text-white hover:bg-[#9abf5a] rounded-full mx-2"
         >
@@ -96,7 +96,7 @@ const NavbarAdmin: React.FC = () => {
               ></path>
             </g>
           </svg>
-        </button>
+        </button> */}
         <div className="flex items-center gap-4 mx-2">
           {/* <img
           className="w-10 h-10 rounded-full"

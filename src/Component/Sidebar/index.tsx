@@ -1,11 +1,11 @@
 import Dashboard from "../Icon/dashboard";
 import User from "../Icon/user";
 import Group from "../Icon/group";
-import Doctor from "../Icon/doctor";
+// import Doctor from "../Icon/doctor";
 // import Equipment from "../Icon/equipment";
 // import Print from "../Icon/print";
 // import Report from "../Icon/report";
-import OtherOption from "../Icon/otherOption";
+// import OtherOption from "../Icon/otherOption";
 import Introduction from "../Icon/introduction";
 import SignOut from "../Icon/signOut";
 import { useNavigate } from "react-router-dom";
@@ -51,11 +51,11 @@ const Sidebar: React.FC = () => {
       icon: <Group />,
       path: "/admin/group",
     },
-    {
-      label: "Bác sĩ",
-      icon: <Doctor />,
-      path: "/admin/doctor",
-    },
+    // {
+    //   label: "Bác sĩ",
+    //   icon: <Doctor />,
+    //   path: "/admin/doctor",
+    // },
     // {
     //   label: "Thiết bị",
     //   icon: <Equipment />,
@@ -71,11 +71,11 @@ const Sidebar: React.FC = () => {
     //   icon: <Report />,
     //   path: "/admin/report",
     // },
-    {
-      label: "Lựa chọn khác",
-      icon: <OtherOption />,
-      path: "/admin/other-option",
-    },
+    // {
+    //   label: "Lựa chọn khác",
+    //   icon: <OtherOption />,
+    //   path: "/admin/other-option",
+    // },
     {
       label: "Giới thiệu",
       icon: <Introduction />,

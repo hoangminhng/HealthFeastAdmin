@@ -12,7 +12,7 @@ const Group: React.FC = () => {
         Nhóm
       </Typography>
       <div className=" bg-white p-3 mx-2 h-full flex flex-col items-center justify-between">
-        chưa có nhóm
+        Coming soon
       </div>
     </div>
   );
