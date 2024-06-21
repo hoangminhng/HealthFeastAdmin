@@ -122,7 +122,7 @@ const User: React.FC = () => {
               </tbody>
             </table>
           </div>
-          <button
+          {/* <button
             onClick={toggleModal}
             type="button"
             className="text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-2xl text-sm px-3 py-1 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 w-fit flex items-center"
@@ -140,7 +140,7 @@ const User: React.FC = () => {
               />
             </svg>
             Thêm người dùng
-          </button>
+          </button> */}
           {isModalOpen && (
             <div
               tabIndex={-1}

@@ -42,7 +42,6 @@ const Dashboard: React.FC = () => {
       data,
       xField: "month",
       yField: "value",
-      colorField: "month",
       group: false,
       style: {
         inset: 5,
