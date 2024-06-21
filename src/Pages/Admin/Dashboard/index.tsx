@@ -3,7 +3,7 @@ import StaticticCard from "../../../Component/StatisticCard";
 import { NumberFormat } from "../../../Utils/numberFormat";
 import { useEffect, useState } from "react";
 import { GetTotalStatistic } from "../../../api/Dashboard";
-import DemoColumn from "../../../Component/Chart";
+import { Column } from "@ant-design/charts";
 
 const Dashboard: React.FC = () => {
   const [dashboard, setDashboard] = useState<Dashboard | undefined>();
@@ -23,6 +23,40 @@ const Dashboard: React.FC = () => {
       console.log(error);
     }
   }, []);
+
+  const transformMonthlyTransaction = (
+    monthlyTransaction: Record<string, number>
+  ) => {
+    return Object.entries(monthlyTransaction).map(([month, value]) => ({
+      month,
+      value: value / 1000000, // Adjusting for better visualization if needed
+    }));
+  };
+
+  const DemoColumn = ({
+    data,
+  }: {
+    data: { month: string; value: number }[];
+  }) => {
+    const config = {
+      data,
+      xField: "month",
+      yField: "value",
+      colorField: "month",
+      group: false,
+      style: {
+        inset: 5,
+        innerHeight: 0.8,
+        innerWidth: 0.8,
+      },
+    };
+    return <Column {...config} />;
+  };
+
+  const monthlyData = dashboard
+    ? transformMonthlyTransaction(dashboard.monthlyTransaction)
+    : [];
+
   return (
     <>
       <div className="grid grid-cols-4 gap-4 mb-4">
@@ -241,7 +275,7 @@ const Dashboard: React.FC = () => {
         Tổng doanh thu
       </Typography>
       <div className="h-full mb-4 rounded bg-gray-50 dark:bg-gray-800">
-        <DemoColumn />
+        <DemoColumn data={monthlyData} />
       </div>
     </>
   );

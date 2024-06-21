@@ -1,18 +1,48 @@
 import { Column } from "@ant-design/plots";
 
+const data = [
+  {
+    month: "Jan.",
+    value: 18.9,
+  },
+  {
+    month: "Feb.",
+    value: 28.8,
+  },
+  {
+    month: "Mar.",
+    value: 39.3,
+  },
+  {
+    month: "Apr.",
+    value: 81.4,
+  },
+  {
+    month: "May",
+    value: 47,
+  },
+  {
+    month: "Jun.",
+    value: 20.3,
+  },
+  {
+    month: "Jul.",
+    value: 24,
+  },
+  {
+    month: "Aug.",
+    value: 35.6,
+  },
+];
+
 const DemoColumn = () => {
   const config = {
-    data: {
-      type: "fetch",
-      value:
-        "https://gw.alipayobjects.com/os/antfincdn/iPY8JFnxdb/dodge-padding.json",
-    },
-    xField: "月份",
-    yField: "月均降雨量",
-    colorField: "name",
-    group: true,
+    data,
+    xField: "month",
+    yField: "value",
+    colorField: "month",
+    group: false,
     style: {
-        
       // 矩形四个方向的内边距
       inset: 5,
       innerHeight: 0.8,
