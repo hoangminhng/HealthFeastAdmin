@@ -1,9 +1,7 @@
 interface User {
-  userId: number;
-  userName: string;
-  phoneNumber: string;
-  dateRegistered: Date;
-  memberShip: string;
-  paymentAmout: number;
-  debt: number;
+  email: string;
+  name: string;
+  avatar: string;
+  totalPay: number;
+  premiumType: string;
 }

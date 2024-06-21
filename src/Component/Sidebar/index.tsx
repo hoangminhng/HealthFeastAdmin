@@ -66,16 +66,16 @@ const Sidebar: React.FC = () => {
         aria-label="Sidebar"
       >
         <div className="h-full flex flex-col px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-          <a href="#" className="flex ms-2 md:me-24">
-            <img
-              src="src\assets\healthfeast.png"
-              className="h-8 me-3"
-              alt="FlowBite Logo"
-            />
+          {/* <a href="#" className="flex ms-2 md:me-24">
             <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
               Health Feast
             </span>
-          </a>
+          </a> */}
+          <img
+            src="https://res.cloudinary.com/dfdwupiah/image/upload/v1718878623/eddcwcvk7lc21urydg61.jpg"
+            className="w-full me-3"
+            alt="FlowBite Logo"
+          />
           <ul className="space-y-2 font-medium">
             {sidebarItem.map(({ label, icon, path }, key) => {
               return (

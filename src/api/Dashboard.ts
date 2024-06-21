@@ -1,10 +1,11 @@
 import axios from "axios";
 import baseURL from "./baseApi";
+// const baseUrl = process.env.REACT_APP_BACK_END_URL;
 
-export const GetUser = async () => {
+export const GetTotalStatistic = async () => {
   try {
     const response = await axios.get(
-      `${baseURL}/api/Statistic/GetUserStatistic`
+      `${baseURL}/api/Statistic/GetTotalStatistic`
     );
     console.log(response);
     return response;

@@ -2,8 +2,27 @@ import { Typography } from "@material-tailwind/react";
 import PlusIcon from "../../../Component/Icon/plusIcon";
 import StaticticCard from "../../../Component/StatisticCard";
 import { NumberFormat } from "../../../Utils/numberFormat";
+import { useEffect, useState } from "react";
+import { GetTotalStatistic } from "../../../api/Dashboard";
 
 const Dashboard: React.FC = () => {
+  const [dashboard, setDashboard] = useState<Dashboard | undefined>();
+  const fetchStatistic = async () => {
+    try {
+      let respone = await GetTotalStatistic();
+      setDashboard(respone.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    try {
+      fetchStatistic();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   return (
     <>
       <div className="grid grid-cols-4 gap-4 mb-4">
@@ -11,7 +30,7 @@ const Dashboard: React.FC = () => {
           <p className="text-gray-400 dark:text-gray-500 w-full h-full">
             <StaticticCard
               title="Tổng phí giao dịch"
-              value={NumberFormat(764305000)}
+              value={NumberFormat(dashboard?.totalMoney ?? 0)}
               icon={
                 <svg
                   className="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3"
@@ -55,7 +74,7 @@ const Dashboard: React.FC = () => {
           <p className="text-gray-400 dark:text-gray-500 w-full h-full">
             <StaticticCard
               title="Người dùng mới"
-              value="12.071"
+              value={dashboard?.totalUser.toString() ?? "0"}
               icon={
                 <svg
                   className="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3"
@@ -106,7 +125,7 @@ const Dashboard: React.FC = () => {
             />
           </p>
         </div>
-        <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+        {/* <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
           <p className="text-gray-400 dark:text-gray-500 w-full h-full">
             <StaticticCard
               title="Tổng thu nhập"
@@ -174,12 +193,12 @@ const Dashboard: React.FC = () => {
               }
             />
           </p>
-        </div>
+        </div> */}
         <div className="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
           <p className="text-gray-400 dark:text-gray-500 w-full h-full">
             <StaticticCard
               title="Tổng khối lượng giao dịch"
-              value="30,000"
+              value={dashboard?.totalTransaction.toString() ?? "0"}
               icon={
                 <svg
                   className="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3"

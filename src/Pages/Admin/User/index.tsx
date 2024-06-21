@@ -19,7 +19,7 @@ const User: React.FC = () => {
 
   const fetchUsers = async () => {
     let respone = await GetUser();
-    setUserList(respone);
+    setUserList(respone?.data);
   };
 
   useEffect(() => {
@@ -78,13 +78,10 @@ const User: React.FC = () => {
                     {" "}
                   </th>
                   <th scope="col" className="px-6 py-3">
+                    {" "}
+                  </th>
+                  <th scope="col" className="px-6 py-3">
                     Tên người dùng
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Số điện thoại
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Ngày đăng ký
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Gói dùng
@@ -93,7 +90,7 @@ const User: React.FC = () => {
                     Đã thanh toán
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Nợ
+                    Email
                   </th>
                 </tr>
               </thead>
@@ -110,24 +107,28 @@ const User: React.FC = () => {
                     <th
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg"
+                    ></th>
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg flex items-center"
                     >
-                      {user.userName}
+                      <img
+                        src={user.avatar}
+                        alt="avatar user"
+                        className="w-10 h-10 rounded-full mx-2"
+                      />
+                      {user.name}
                     </th>
-                    <td className="px-6 py-4">{user.phoneNumber}</td>
-                    <td className="px-6 py-4">
-                      {user.dateRegistered.toDateString()}
-                    </td>
-                    <td className="px-6 py-4">{user.memberShip}</td>
+                    <td className="px-6 py-4">{user.premiumType}</td>
                     <td className="px-6 py-4 text-green-500">
-                      {NumberFormat(user.paymentAmout)}
+                      {NumberFormat(user.totalPay)}
                     </td>
-                    <td
-                      className={`px-6 py-4 ${
-                        user.debt > 0 ? "text-red-500" : ""
-                      }`}
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg flex items-center"
                     >
-                      {NumberFormat(user.debt)}
-                    </td>
+                      {user.email}
+                    </th>
                   </tr>
                 ))}
               </tbody>
