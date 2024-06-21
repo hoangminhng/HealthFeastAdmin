@@ -1,9 +1,9 @@
 import { Typography } from "@material-tailwind/react";
-import PlusIcon from "../../../Component/Icon/plusIcon";
 import StaticticCard from "../../../Component/StatisticCard";
 import { NumberFormat } from "../../../Utils/numberFormat";
 import { useEffect, useState } from "react";
 import { GetTotalStatistic } from "../../../api/Dashboard";
+import DemoColumn from "../../../Component/Chart";
 
 const Dashboard: React.FC = () => {
   const [dashboard, setDashboard] = useState<Dashboard | undefined>();
@@ -240,10 +240,8 @@ const Dashboard: React.FC = () => {
       >
         Tổng doanh thu
       </Typography>
-      <div className="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-        <p className="text-2xl text-gray-400 dark:text-gray-500">
-          <PlusIcon />
-        </p>
+      <div className="h-full mb-4 rounded bg-gray-50 dark:bg-gray-800">
+        <DemoColumn />
       </div>
     </>
   );

@@ -10,7 +10,7 @@ const PageNotFound: React.FC = () => {
           The page you're looking for does not seem to exist
         </p>
         <Link
-          to="/"
+          to="/admin"
           className="block mx-auto my-8 px-4 py-2 bg-primary rounded hover:bg-red-700"
         >
           Go Home

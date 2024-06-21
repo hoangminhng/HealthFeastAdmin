@@ -12,7 +12,21 @@ const Login: React.FC = () => {
         duration: 2000,
       });
     } else if (tel === "admin" && password === "123456") {
-      console.log("Login success");
+      const user: LoginedUser = {
+        accountId: 1,
+        name: "Admin",
+        roleId: 1,
+        token: "admin",
+        username: "admin",
+      };
+      console.log(user);
+      let currentDate = new Date();
+      localStorage.setItem("token", user.token);
+      localStorage.setItem(
+        "expiration",
+        currentDate.setHours(currentDate.getHours() + 1).toString()
+      );
+      localStorage.setItem("userId", user.accountId.toString());
       navigate("/admin");
     } else {
       toast.error("Sai thông tin đăng nhập.", {
@@ -34,7 +48,11 @@ const Login: React.FC = () => {
         className="max-w-sm mx-auto flex flex-col items-center"
         onKeyDown={handleKeyDown}
       >
-        <img src="src\assets\healthfeast.png" alt="logo" className="w-5/6" />
+        <img
+          src="https://res.cloudinary.com/dg9a4e1uw/image/upload/v1718955561/xymxo54srbs48puhzlnk.png"
+          alt="logo"
+          className="w-5/6"
+        />
         <div className="mb-5 text-center">
           <label className="block mb-2 text-5xl font-extrabold text-[#FFFFFF]">
             Đăng nhập

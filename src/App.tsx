@@ -7,6 +7,7 @@ import Dashboard from "./Pages/Admin/Dashboard";
 import User from "./Pages/Admin/User";
 import Group from "./Pages/Admin/Group";
 import Doctor from "./Pages/Admin/Doctor";
+import ProtectedRoute from "./Component/ProtectRoute";
 
 function App() {
   return (
@@ -14,7 +15,14 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/admin" element={<Admin />}>
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Dashboard />} />
             <Route path="user" element={<User />} />
             <Route path="group" element={<Group />} />

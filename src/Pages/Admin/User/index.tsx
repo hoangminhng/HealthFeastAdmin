@@ -78,9 +78,6 @@ const User: React.FC = () => {
                     {" "}
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    {" "}
-                  </th>
-                  <th scope="col" className="px-6 py-3">
                     Tên người dùng
                   </th>
                   <th scope="col" className="px-6 py-3">
@@ -106,10 +103,6 @@ const User: React.FC = () => {
                     </th>
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg"
-                    ></th>
-                    <th
-                      scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg flex items-center"
                     >
                       <img
@@ -123,12 +116,7 @@ const User: React.FC = () => {
                     <td className="px-6 py-4 text-green-500">
                       {NumberFormat(user.totalPay)}
                     </td>
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg flex items-center"
-                    >
-                      {user.email}
-                    </th>
+                    <td className="px-6 py-4 text-black">{user.email}</td>
                   </tr>
                 ))}
               </tbody>
