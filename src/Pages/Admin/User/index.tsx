@@ -6,7 +6,9 @@ import { NumberFormat } from "../../../Utils/numberFormat";
 
 const User: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userlList, setUserList] = useState<User[] | undefined>([]);
+  const [userlList, setUserList] = useState<User[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 10;
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -30,6 +32,17 @@ const User: React.FC = () => {
     }
   }, []);
 
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
+
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentDoctors = userlList?.slice(
+    indexOfFirstUser,
+    indexOfLastUser
+  );
+  const totalPages = Math.ceil(userlList.length / usersPerPage);
   return (
     <>
       <style>
@@ -92,7 +105,7 @@ const User: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="rounded-tbody">
-                {userlList?.map((user) => (
+                {currentDoctors?.map((user) => (
                   <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th>
                       <Checkbox
@@ -105,11 +118,6 @@ const User: React.FC = () => {
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white rounded-bl-lg flex items-center"
                     >
-                      <img
-                        src={user.avatar}
-                        alt="avatar user"
-                        className="w-10 h-10 rounded-full mx-2"
-                      />
                       {user.name}
                     </th>
                     <td className="px-6 py-4">{user.premiumType}</td>
@@ -121,6 +129,35 @@ const User: React.FC = () => {
                 ))}
               </tbody>
             </table>
+            <div className="flex justify-center mt-4">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="px-4 py-2 mx-1 text-sm text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600"
+          >
+            Previous
+          </button>
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={`px-4 py-2 mx-1 text-sm rounded-md ${
+                currentPage === index + 1
+                  ? "bg-[#9ABF5A] text-white"
+                  : "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600"
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="px-4 py-2 mx-1 text-sm text-gray-700 bg-gray-200 rounded-md dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600"
+          >
+            Next
+          </button>
+        </div>
           </div>
           {/* <button
             onClick={toggleModal}
